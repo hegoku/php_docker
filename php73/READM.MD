@@ -1,12 +1,14 @@
-php-7.3.5
+php-7.3.8
 
-swoole-4.3.4 --enable-mysqlnd --enable-sockets
+swoole-4.4.3 --enable-mysqlnd --enable-sockets
 
 mcrypt-1.0.2
 
-redis-4.3.0
+redis-5.0.2
 
-mongodb-1.5.3
+mongodb-1.5.5
+
+rdKafka-3.1.2
 
 php-fpm
 
