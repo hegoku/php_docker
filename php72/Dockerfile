@@ -7,7 +7,7 @@ RUN apk add --no-cache --virtual .build-deps \
         g++ \
         make \
         libmcrypt-dev \
-    && apk add libstdc++ libmcrypt \
+    && apk add libstdc++ libmcrypt ssmtp \
     && docker-php-ext-install pdo_mysql \
     && pecl install redis \
     && pecl install channel://pecl.php.net/mcrypt-1.0.2 \ 
