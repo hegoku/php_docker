@@ -1,4 +1,4 @@
-FROM php:7.3.8-fpm-alpine3.10
+FROM php:7.3.13-fpm-alpine3.10
 
 RUN apk add --no-cache --virtual .build-deps \
         libxml2-dev \
@@ -15,10 +15,10 @@ RUN apk add --no-cache --virtual .build-deps \
     && pecl install mongodb \
     && docker-php-ext-enable redis mcrypt mongodb \
     && docker-php-ext-install sockets \
-    && curl -fsSL 'https://pecl.php.net/get/swoole-4.4.3.tgz' -o swoole-4.4.3.tgz \
+    && curl -fsSL 'https://pecl.php.net/get/swoole-4.4.13.tgz' -o swoole.tgz \
     && mkdir -p swoole \
-    && tar -xf swoole-4.4.3.tgz -C swoole --strip-components=1 \
-    && rm swoole-4.4.3.tgz \
+    && tar -xf swoole.tgz -C swoole --strip-components=1 \
+    && rm swoole.tgz \
     && ( \
         cd swoole \
         && phpize \

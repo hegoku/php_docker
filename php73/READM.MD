@@ -1,6 +1,6 @@
-php-7.3.8
+php-7.3.14
 
-swoole-4.4.3 --enable-mysqlnd --enable-sockets
+swoole-4.4.13 --enable-mysqlnd --enable-sockets
 
 mcrypt-1.0.2
 
