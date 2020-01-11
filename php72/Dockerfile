@@ -7,17 +7,21 @@ RUN apk add --no-cache --virtual .build-deps \
         g++ \
         make \
         libmcrypt-dev \
-    && apk add libstdc++ libmcrypt ssmtp \
+        libpng-dev \
+        libzip-dev \
+    && apk add libstdc++ libmcrypt librdkafka ssmtp libpng libzip \
     && docker-php-ext-install pdo_mysql \
     && pecl install redis \
     && pecl install channel://pecl.php.net/mcrypt-1.0.2 \ 
     && pecl install mongodb \
     && docker-php-ext-enable redis mcrypt mongodb \
     && docker-php-ext-install sockets \
-    && curl -fsSL 'https://pecl.php.net/get/swoole-4.3.3.tgz' -o swoole-4.3.4.tgz \
+    && docker-php-ext-install gd \
+    && docker-php-ext-install zip \
+    && curl -fsSL 'https://pecl.php.net/get/swoole-4.4.14.tgz' -o swoole.tgz \
     && mkdir -p swoole \
-    && tar -xf swoole-4.3.4.tgz -C swoole --strip-components=1 \
-    && rm swoole-4.3.4.tgz \
+    && tar -xf swoole.tgz -C swoole --strip-components=1 \
+    && rm swoole.tgz \
     && ( \
         cd swoole \
         && phpize \
@@ -27,5 +31,7 @@ RUN apk add --no-cache --virtual .build-deps \
     ) \
     && rm -r swoole \
     && docker-php-ext-enable swoole \
+    && pecl install rdkafka \
+    && docker-php-ext-enable rdkafka \
     && apk del .build-deps
 

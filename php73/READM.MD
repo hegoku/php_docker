@@ -1,23 +1,32 @@
-php-7.3.14
+php-7.3.13
 
-swoole-4.4.13 --enable-mysqlnd --enable-sockets
+PHP Ext：
 
-mcrypt-1.0.2
+```
+swoole-4.4.14 --enable-mysqlnd --enable-sockets
+mcrypt-2.5.8
+redis-5.1.1
+mongodb-1.6.1
+rdKafka-4.0.2
+gd
+zip
+```
 
-redis-5.0.2
+Software:
 
-mongodb-1.5.5
+```
+ssmtp
+```
 
-rdKafka-3.1.2
 
 php-fpm
 
 ```
-docker run --name name -p your_port:9000 -v your_web_dir:/var/www/html -v your_php_ini_file:/usr/local/etc/php/php.ini -v your_fpm_config_file:/usr/local/etc/php-fpm.d/file.conf hegoku/php73
+docker run --name name -p your_port:9000 -v your_web_dir:/var/www/html -v your_php_ini_file:/usr/local/etc/php/php.ini -v your_fpm_config_file:/usr/local/etc/php-fpm.d/file.conf hegoku/php
 ```
 
 php-cli
 
 ```
-docker run --name name -v your_web_dir:/var/www/html -v your_php_ini_file:/usr/local/etc/php/php.ini hegoku/php73 hegoku/php73 /usr/local/bin/php /var/www/html/a.php
+docker run --name name -v your_web_dir:/var/www/html -v your_php_ini_file:/usr/local/etc/php/php.ini hegoku/php hegoku/php /usr/local/bin/php /var/www/html/a.php
 ```
