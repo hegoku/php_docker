@@ -10,8 +10,8 @@ RUN apk add --no-cache --virtual .build-deps \
         librdkafka-dev \
         libpng-dev \
         libzip-dev \
-        imagemagick-dev \
-    && apk add libstdc++ libmcrypt librdkafka ssmtp libpng libzip imagemagick \
+        imagemagick6-dev \
+    && apk add libstdc++ libmcrypt librdkafka ssmtp libpng libzip imagemagick6 \
     && docker-php-ext-install pdo_mysql \
     && pecl install redis \
     && pecl install channel://pecl.php.net/mcrypt-1.0.2 \ 

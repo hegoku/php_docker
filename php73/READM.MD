@@ -10,7 +10,9 @@ mongodb-1.7.4
 rdKafka-4.0.3
 gd
 zip
+opcache
 imagick-3.4.4
+imagemagick-6.9.10.75
 ```
 
 Software:

@@ -10,6 +10,7 @@ mongodb-1.5.3
 rdKafka
 gd
 zip
+opcache
 ```
 
 Software:
