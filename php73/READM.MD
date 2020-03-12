@@ -1,15 +1,16 @@
-php-7.3.13
+php-7.3.15
 
 PHP Ext：
 
 ```
-swoole-4.4.14 --enable-mysqlnd --enable-sockets
+swoole-4.4.16 --enable-mysqlnd --enable-sockets
 mcrypt-2.5.8
-redis-5.1.1
-mongodb-1.6.1
-rdKafka-4.0.2
+redis-5.2.0
+mongodb-1.7.4
+rdKafka-4.0.3
 gd
 zip
+imagick-3.4.4
 ```
 
 Software:
