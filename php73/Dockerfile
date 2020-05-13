@@ -1,4 +1,4 @@
-FROM php:7.3.15-fpm-alpine3.11
+FROM php:7.3.17-fpm-alpine3.11
 
 RUN apk add --no-cache --virtual .build-deps \
         libxml2-dev \
@@ -13,6 +13,7 @@ RUN apk add --no-cache --virtual .build-deps \
         imagemagick6-dev \
     && apk add libstdc++ libmcrypt librdkafka ssmtp libpng libzip imagemagick6 \
     && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install bcmath \
     && pecl install redis \
     && pecl install channel://pecl.php.net/mcrypt-1.0.2 \ 
     && pecl install mongodb \
@@ -22,7 +23,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && docker-php-ext-install gd \
     && docker-php-ext-install zip \
     && docker-php-ext-install opcache \
-    && curl -fsSL 'https://pecl.php.net/get/swoole-4.4.16.tgz' -o swoole.tgz \
+    && curl -fsSL 'https://pecl.php.net/get/swoole-4.5.1.tgz' -o swoole.tgz \
     && mkdir -p swoole \
     && tar -xf swoole.tgz -C swoole --strip-components=1 \
     && rm swoole.tgz \
