@@ -11,7 +11,8 @@ RUN apk add --no-cache --virtual .build-deps \
         libpng-dev \
         libzip-dev \
         imagemagick6-dev \
-    && apk add libstdc++ libmcrypt librdkafka ssmtp libpng libzip imagemagick6 \
+        openssl-dev \
+    && apk add libstdc++ libmcrypt librdkafka ssmtp libpng libzip imagemagick6 openssl \
     && docker-php-ext-install pdo_mysql \
     && pecl install redis \
     && pecl install channel://pecl.php.net/mcrypt-1.0.2 \ 
@@ -29,7 +30,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && ( \
         cd swoole \
         && phpize \
-        && ./configure --enable-mysqlnd --enable-sockets \
+        && ./configure --enable-mysqlnd --enable-sockets --enable-openssl --enable-http2 \
         && make -j "$(nproc)" \
         && make install \
     ) \
