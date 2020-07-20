@@ -1,4 +1,4 @@
-FROM php:7.3.17-fpm-alpine3.11
+FROM php:7.3.19-fpm-alpine3.12
 
 RUN apk add --no-cache --virtual .build-deps \
         libxml2-dev \
@@ -11,7 +11,8 @@ RUN apk add --no-cache --virtual .build-deps \
         libpng-dev \
         libzip-dev \
         imagemagick6-dev \
-    && apk add libstdc++ libmcrypt librdkafka ssmtp libpng libzip imagemagick6 \
+        openssl-dev \
+    && apk add libstdc++ libmcrypt librdkafka ssmtp libpng libzip imagemagick6 openssl \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install bcmath \
     && pecl install redis \
@@ -30,7 +31,7 @@ RUN apk add --no-cache --virtual .build-deps \
     && ( \
         cd swoole \
         && phpize \
-        && ./configure --enable-mysqlnd --enable-sockets \
+        && ./configure --enable-mysqlnd --enable-sockets --enable-openssl --enable-http2 \
         && make -j "$(nproc)" \
         && make install \
     ) \

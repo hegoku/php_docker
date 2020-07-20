@@ -1,9 +1,9 @@
-php-7.3.17
+php-7.3.19
 
 PHP Ext：
 
 ```
-swoole-4.5.1 --enable-mysqlnd --enable-sockets
+swoole-4.5.1 --enable-mysqlnd --enable-sockets --enable-openssl --enable-http2
 mcrypt-1.0.2
 redis-5.2.2
 mongodb-1.7.4

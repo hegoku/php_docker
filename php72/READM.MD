@@ -3,7 +3,7 @@ php-7.2.28
 PHP Ext：
 
 ```
-swoole-4.4.16 --enable-mysqlnd --enable-sockets
+swoole-4.4.16 --enable-mysqlnd --enable-sockets --enable-openssl --enable-http2
 mcrypt-1.0.2
 redis-4.3.0
 mongodb-1.5.3
