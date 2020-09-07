@@ -1,12 +1,12 @@
-php-7.4.8
+php-7.4.10
 
 PHP Ext：
 
 ```
-swoole-4.5.2 --enable-mysqlnd --enable-sockets
+swoole-4.5.3 --enable-mysqlnd --enable-sockets --enable-openssl
 mcrypt-1.0.3
-redis-5.2.2
-mongodb-1.7.4
+redis-5.3.1
+mongodb-1.8.0
 rdKafka-4.0.3
 gd
 zip
@@ -15,6 +15,7 @@ imagick-3.4.4
 imagemagick-6.9.10.75
 bcmath
 ffmpeg
+openssl
 ```
 
 Software:

@@ -1,4 +1,4 @@
-FROM php:7.4.8-fpm-alpine3.12
+FROM php:7.4.10-fpm-alpine3.12
 
 RUN apk add --no-cache --virtual .build-deps \
         libxml2-dev \
@@ -12,7 +12,8 @@ RUN apk add --no-cache --virtual .build-deps \
         libzip-dev \
         imagemagick6-dev \
         ffmpeg-dev \
-    && apk add libstdc++ libmcrypt librdkafka ssmtp libpng libzip imagemagick6 ffmpeg \
+        openssl-dev \
+    && apk add libstdc++ libmcrypt librdkafka ssmtp libpng libzip imagemagick6 ffmpeg openssl \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install bcmath \
     && pecl install redis \
@@ -24,14 +25,14 @@ RUN apk add --no-cache --virtual .build-deps \
     && docker-php-ext-install gd \
     && docker-php-ext-install zip \
     && docker-php-ext-install opcache \
-    && curl -fsSL 'https://pecl.php.net/get/swoole-4.5.1.tgz' -o swoole.tgz \
+    && curl -fsSL 'https://pecl.php.net/get/swoole-4.5.3.tgz' -o swoole.tgz \
     && mkdir -p swoole \
     && tar -xf swoole.tgz -C swoole --strip-components=1 \
     && rm swoole.tgz \
     && ( \
         cd swoole \
         && phpize \
-        && ./configure --enable-mysqlnd --enable-sockets \
+        && ./configure --enable-mysqlnd --enable-sockets --enable-openssl \
         && make -j "$(nproc)" \
         && make install \
     ) \
